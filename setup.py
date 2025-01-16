@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-with open('scr/README.md', 'r') as f:
+with open('README.md', 'r') as f:
     long_description = f.read()
 
 
@@ -10,20 +10,22 @@ setup(
     description='A Python library with a TensorFlow model for building a tree database from remote sensing data.',
     author='Sizhuo Li',
     author_email='sizli@ign.ku.dk',
-    url='',
-    package_dir={'': 'src'},
-    packages=find_packages(where='src'),
+    url='https://github.com/sizhuoli/treePoints',
+    package_dir={'': 'treePoints'},
+    packages=find_packages(where='treePoints'),
     long_description=long_description,
     long_description_content_type='text/markdown',
     install_requires=[
-        'python=3.11',
-        'pip=24',
-        'pillow=10.3.0',
-        'rasterio=1.3.10',
-        'imgaug=0.4.0',
-        'scikit-learn=1.5.0',
-        'ipython=8.25.0',
         'tensorflow[and-cuda]==2.15.1',
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.11',
+    license='MIT',
+    classifiers=[
+        'Intended Audience :: Developers',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3.11',
+        'Topic :: Scientific/Engineering :: Artificial Intelligence',
+        'Topic :: Scientific/Engineering :: GIS',
+    ],
 )
