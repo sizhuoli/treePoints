@@ -6,7 +6,7 @@ with open('README.md', 'r') as f:
 
 setup(
     name='treepoints',
-    version='0.1.3',
+    version='0.1.4',
     description='A Python library with a TensorFlow model for building a tree database from remote sensing data.',
     author='Sizhuo Li',
     author_email='sizli@ign.ku.dk',

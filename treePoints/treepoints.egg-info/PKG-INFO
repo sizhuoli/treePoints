@@ -1,6 +1,6 @@
 Metadata-Version: 2.2
 Name: treepoints
-Version: 0.1.3
+Version: 0.1.4
 Summary: A Python library with a TensorFlow model for building a tree database from remote sensing data.
 Home-page: https://github.com/sizhuoli/treePoints
 Author: Sizhuo Li
@@ -33,6 +33,21 @@ Dynamic: summary
 # treePoints
 
 A python package to build a tree database from remote sensing data.
+
+
+![Build Status](https://img.shields.io/badge/build-passing-green)
+![Python Version](https://img.shields.io/badge/python-3.11-blue)
+![License](https://img.shields.io/badge/Apache-2.0-blue)
+![Release](https://img.shields.io/badge/release-v0.1.3-orange)
+![PyPI version](https://img.shields.io/pypi/v/treepoints)
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Demo Usage](#demo-usage)
+- [Features](#features)
+- [Acknowledgements](#acknowledgements)
+
 
 ## Installation
 
@@ -78,7 +93,7 @@ pip install .
 ```
 
 
-## Step 4: Demo Usage
+## Demo Usage
 
 See [repository](https://github.com/sizhuoli/treePoints).
 
@@ -87,3 +102,10 @@ python test_example/demo_predict.py
 ```
 
 Set configs in test_example/config/hyperps.yaml
+
+
+## Features
+..
+
+## Acknowledgements
+..
