@@ -1,3 +1,7 @@
+from pathlib import Path
+
+import hydra
+import ipdb
 import numpy as np
 import rasterio
 from scipy import ndimage as ndi
@@ -16,20 +20,23 @@ warnings.filterwarnings("ignore")
 class PostprocessorManager:
     def __init__(self):
         ##
+        self.outpath = None
+        self.root = Path(hydra.utils.get_original_cwd())
         print('PostprocessorManager initiated')
 
-    def processor_run(self, config):
 
-        heatmaps = glob.glob(config.general.output_dir + '*1km*' + config.general.output_suffix_density + '*')
+    def processor_run(self, config):
+        path = str(self.root / config.general.output_dir) + '/'
+        heatmaps = glob.glob(path + '*1km*' + config.general.output_suffix_density + '*')
         # check if output file already exists
         locates = [re.search(r'1km_(\d+_\d+)_density', h).group(1) for h in heatmaps]
         # exclude those already processed
         heatmaps = [heatmaps[i] for i in range(len(heatmaps)) if
-                    not os.path.exists(os.path.join(config.general.output_dir, f'1km_{locates[i]}_treeCenters.gpkg'))]
+                    not os.path.exists(os.path.join(path, f'1km_{locates[i]}_treeCenters.gpkg'))]
         # ipdb.set_trace()
         print(f'Found {len(heatmaps)} heatmaps (tree density maps) to process')
-        if not os.path.exists(config.general.output_dir):
-            os.makedirs(config.general.output_dir)
+        if not os.path.exists(path):
+            os.makedirs(path)
 
         with ProcessPoolExecutor(max_workers=config.postprocess.maxworker) as executor:
             flag = list(tqdm(executor.map(self.heat2map, heatmaps, [config] * len(heatmaps)), total=len(heatmaps))
@@ -50,24 +57,25 @@ class PostprocessorManager:
         self.ending()
 
 
-    @staticmethod
-    def heat2map(heatmap, config):
-
+    def heat2map(self, heatmap, config):
         locate = re.search(r'1km_(\d+_\d+)_density', heatmap).group(1)
 
         try:
-            chm = glob.glob(config.postprocess.chm_dir + f'**/*{locate}*.tif', recursive=True)[0]
+            pathchm = str(self.root / config.postprocess.chm_dir) + '/'
+            chm = glob.glob(pathchm + f'**/*{locate}*.tif', recursive=True)[0]
         except:
             print(f'No chm found for {locate}')
             return 'error chm'
         try:
-            elevation = glob.glob(config.postprocess.elevation_dir + f'**/*{locate}*.tif', recursive=True)[0]
+            pathelevation = str(self.root / config.postprocess.elevation_dir) + '/'
+            elevation = glob.glob(pathelevation + f'**/*{locate}*.tif', recursive=True)[0]
         except:
             print(f'No elevation found for {locate}')
             return 'error elevation'
-
-        image = glob.glob(config.general.input_image_dir + f'*{locate}*.tif', recursive=True)[0]
-        output = os.path.join(config.general.output_dir, f'1km_{locate}_treeCenters.gpkg')
+        inpath = str(self.root / config.general.input_image_dir) + '/'
+        image = glob.glob(inpath + f'*{locate}*.tif', recursive=True)[0]
+        outpath = str(self.root / config.general.output_dir) + '/'
+        output = os.path.join(outpath, f'1km_{locate}_treeCenters.gpkg')
 
         with rasterio.open(heatmap) as src1:
             heat = src1.read(1)
@@ -153,16 +161,18 @@ class PostprocessorManager:
 
         return 'processed'
 
-    @staticmethod
-    def merge_all(config):
+    def merge_all(self, config):
         from subprocess import call
-        call(['ogrmerge.py', '-f', 'GPKG', '-single', '-o', config.general.output_dir + 'merged_centers.gpkg', config.general.output_dir + '1km*.gpkg',
+        outpath = str(self.root / config.general.output_dir) + '/'
+        call(['ogrmerge.py', '-f', 'GPKG', '-single', '-o', outpath + 'merged_centers.gpkg', outpath + '1km*.gpkg',
               '-src_layer_field_content', '{DS_BASENAME}'])
+        # call(['ogrmerge.py', '-f', 'GPKG', '-single', '-o', config.general.output_dir + 'merged_centers.gpkg', config.general.output_dir + '1km*.gpkg',
+        #       '-src_layer_field_content', '{DS_BASENAME}'])
         return
 
-    @staticmethod
-    def delete_separate(config):
-        for f in glob.glob(config.general.output_dir + '1km*.gpkg'):
+    def delete_separate(self, config):
+        outpath = str(self.root / config.general.output_dir) + '/'
+        for f in glob.glob(outpath + '1km*.gpkg'):
             os.remove(f)
         return
 

@@ -1,6 +1,9 @@
 # all functions for running deep learning prediction
 import glob
 import os
+from pathlib import Path
+
+import hydra
 import requests
 
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
@@ -49,9 +52,12 @@ class ModelManager:
         self.models = []
         self.all_files = None
         self.model_url = 'https://sid.erda.dk/share_redirect/gS7JX84yvu'
+        self.root = Path(hydra.utils.get_original_cwd())
 
     def load_files(self, config):
-        self.all_files = glob.glob(config.general.input_image_dir + '/' + config.general.input_image_pref + '*' + config.general.input_image_type)
+
+        path = str(self.root / config.general.input_image_dir)
+        self.all_files = glob.glob(path + '/' + config.general.input_image_pref + '*' + config.general.input_image_type)
         print('Number of raw tif to predict:', len(self.all_files))
         print('=============================')
 
@@ -242,8 +248,8 @@ class ModelManager:
         # # shuffle the files if testing only a subset
         # random.shuffle(all_files)
         for fullPath in tqdm(self.all_files):
-
-            outputSeg = os.path.join(config.general.output_dir, os.path.basename(fullPath).replace(
+            rootpath = str(self.root / config.general.output_dir)
+            outputSeg = os.path.join(rootpath, os.path.basename(fullPath).replace(
                 config.general.input_image_type,
                 config.general.output_suffix_seg + config.general.output_image_type))
             if not os.path.exists(outputSeg):
@@ -255,7 +261,7 @@ class ModelManager:
                                              write_as_type = config.general.output_dtype_seg, th = config.predict.threshold)
 
                         # density
-                        outputDensity = os.path.join(config.general.output_dir, os.path.basename(fullPath).replace(
+                        outputDensity = os.path.join(rootpath, os.path.basename(fullPath).replace(
                             config.general.input_image_type,
                             config.general.output_suffix_density + config.general.output_image_type))
                         self.writeMaskToDisk(detectedMaskDens, detectedMeta, outputDensity,

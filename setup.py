@@ -17,6 +17,7 @@ setup(
     long_description_content_type='text/markdown',
     install_requires=[
         'tensorflow[and-cuda]==2.15.1',
+        'keras==2.15.0',
     ],
     python_requires='>=3.11',
     license='MIT',
@@ -24,7 +25,7 @@ setup(
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
         'Topic :: Scientific/Engineering :: GIS',
     ],

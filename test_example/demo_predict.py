@@ -13,6 +13,7 @@ import hydra
 
 @hydra.main(config_path='config', config_name='hyperps')
 def main(cfg):
+
     model_manager = ModelManager()
 
     model_manager.load_files(cfg)
