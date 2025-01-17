@@ -21,18 +21,16 @@ conda env create -f environment.yml
 After creating the Conda environment, activate it using the following command:
 
 ```bash
-tf2151full_treepoints
+conda activate tf2151full_treepoints
+```
+
+### Step 3: Install the Package
+```bash
+pip install .
 ```
 
 
-
-
-![Figure 1](figures/fig1.png)
-
-Figure 1. From remote sensing data to a tree database. Color indicates tree height (low to high = blue to red)
-
-
-## Demo Usage
+## Step 4: Demo Usage
 
 
 
