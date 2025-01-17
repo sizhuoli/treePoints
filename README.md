@@ -42,11 +42,10 @@ conda activate tf2151full_treepoints
 
 #### Option 1: Install the Package from PyPI
 
-* ( install the package directly, see deployment structure in test_example/ )
+* ( install the package directly, see deployment structure in [repository](https://github.com/sizhuoli/treePoints))
 
 ```
-pip install treePoints
-# pip install -i https://test.pypi.org/simple/ treepoints
+pip install treepoints
 ```
 
 #### Option 2: Install the Package from a cloned [repository](https://github.com/sizhuoli/treePoints):

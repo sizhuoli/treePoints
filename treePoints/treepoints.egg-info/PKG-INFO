@@ -1,11 +1,13 @@
 Metadata-Version: 2.2
 Name: treepoints
-Version: 0.1.4
+Version: 0.1.6
 Summary: A Python library with a TensorFlow model for building a tree database from remote sensing data.
 Home-page: https://github.com/sizhuoli/treePoints
 Author: Sizhuo Li
 Author-email: sizli@ign.ku.dk
 License: Apache License 2.0
+Project-URL: Source, https://github.com/sizhuoli/treePoints
+Project-URL: Documentation, https://github.com/sizhuoli/treePoints/README.md
 Keywords: tree detection,remote sensing,deep learning
 Classifier: Intended Audience :: Developers
 Classifier: Intended Audience :: Science/Research
@@ -26,6 +28,7 @@ Dynamic: description-content-type
 Dynamic: home-page
 Dynamic: keywords
 Dynamic: license
+Dynamic: project-url
 Dynamic: requires-dist
 Dynamic: requires-python
 Dynamic: summary
@@ -38,7 +41,6 @@ A python package to build a tree database from remote sensing data.
 ![Build Status](https://img.shields.io/badge/build-passing-green)
 ![Python Version](https://img.shields.io/badge/python-3.11-blue)
 ![License](https://img.shields.io/badge/Apache-2.0-blue)
-![Release](https://img.shields.io/badge/release-v0.1.3-orange)
 ![PyPI version](https://img.shields.io/pypi/v/treepoints)
 
 ## Table of Contents
@@ -75,11 +77,10 @@ conda activate tf2151full_treepoints
 
 #### Option 1: Install the Package from PyPI
 
-* ( install the package directly, see deployment structure in test_example/ )
+* ( install the package directly, see deployment structure in [repository](https://github.com/sizhuoli/treePoints))
 
 ```
-pip install treePoints
-# pip install -i https://test.pypi.org/simple/ treepoints
+pip install treepoints
 ```
 
 #### Option 2: Install the Package from a cloned [repository](https://github.com/sizhuoli/treePoints):
