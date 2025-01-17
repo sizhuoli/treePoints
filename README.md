@@ -1,6 +1,21 @@
 # treePoints
 
-A python package to build a tree databased from remote sensing data.
+A python package to build a tree database from remote sensing data.
+
+
+![Build Status](https://img.shields.io/badge/build-passing-green)
+![Python Version](https://img.shields.io/badge/python-3.11-blue)
+![License](https://img.shields.io/badge/Apache-2.0-blue)
+![Release](https://img.shields.io/badge/release-v0.1.3-orange)
+![PyPI version](https://img.shields.io/pypi/v/treepoints)
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Demo Usage](#demo-usage)
+- [Features](#features)
+- [Acknowledgements](#acknowledgements)
+
 
 ## Installation
 
@@ -8,8 +23,8 @@ To install the package, follow instructions below.
 
 ### Step 1: Create a Specific Conda Environment
 
-1. First, ensure that Conda is installed on your system. You can download Conda from [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/).
-2. Download the environment file `environment.yml` from this repository.
+1. First, ensure that Conda is installed on your system.
+2. Download the required conda environment file `environment.yml` from this GitHub [repository](https://github.com/sizhuoli/treePoints).
 3. Create the Conda environment using the `environment.yml` file:
 
 ```bash
@@ -25,17 +40,40 @@ conda activate tf2151full_treepoints
 ```
 
 ### Step 3: Install the Package
+
+#### Option 1: Install the Package from PyPI
+
+* ( install the package directly, see deployment structure in test_example/ )
+
+```
+pip install treePoints
+# pip install -i https://test.pypi.org/simple/ treepoints
+```
+
+#### Option 2: Install the Package from a cloned [repository](https://github.com/sizhuoli/treePoints):
+
+* ( clone to run demo test examples )
+
 ```bash
+git clone https://github.com/sizhuoli/treePoints.git
+cd treePoints
 pip install .
 ```
 
 
-## Step 4: Demo Usage
+## Demo Usage
 
-
+See [repository](https://github.com/sizhuoli/treePoints).
 
 ```bash
-python test_example/demo_project.py
+python test_example/demo_predict.py
 ```
 
-Set configs in /config/hyperps.yaml
+Set configs in test_example/config/hyperps.yaml
+
+
+## Features
+..
+
+## Acknowledgements
+..
