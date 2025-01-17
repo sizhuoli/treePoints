@@ -5,8 +5,9 @@ A python package to build a tree database from remote sensing data.
 
 ![Build Status](https://img.shields.io/badge/build-passing-green)
 ![Python Version](https://img.shields.io/badge/python-3.11-blue)
-![License](https://img.shields.io/badge/Apache-2.0-blue)
+![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)
 ![PyPI version](https://img.shields.io/pypi/v/treepoints)
+
 
 ## Table of Contents
 

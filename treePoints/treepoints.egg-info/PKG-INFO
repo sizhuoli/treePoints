@@ -1,23 +1,21 @@
 Metadata-Version: 2.2
 Name: treepoints
-Version: 0.1.6
+Version: 0.1.8
 Summary: A Python library with a TensorFlow model for building a tree database from remote sensing data.
 Home-page: https://github.com/sizhuoli/treePoints
 Author: Sizhuo Li
 Author-email: sizli@ign.ku.dk
-License: Apache License 2.0
+License: CC BY-NC-SA 4.0
 Project-URL: Source, https://github.com/sizhuoli/treePoints
-Project-URL: Documentation, https://github.com/sizhuoli/treePoints/README.md
 Keywords: tree detection,remote sensing,deep learning
 Classifier: Intended Audience :: Developers
 Classifier: Intended Audience :: Science/Research
-Classifier: License :: OSI Approved :: Apache Software License
 Classifier: Programming Language :: Python :: 3
 Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
 Classifier: Topic :: Scientific/Engineering :: GIS
 Requires-Python: >=3.11
 Description-Content-Type: text/markdown
-License-File: LICENSE.md
+License-File: LICENSE-CC-BY-NC-SA.md
 Requires-Dist: tensorflow[and-cuda]==2.15.1
 Requires-Dist: keras==2.15.0
 Dynamic: author
@@ -40,8 +38,9 @@ A python package to build a tree database from remote sensing data.
 
 ![Build Status](https://img.shields.io/badge/build-passing-green)
 ![Python Version](https://img.shields.io/badge/python-3.11-blue)
-![License](https://img.shields.io/badge/Apache-2.0-blue)
+![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)
 ![PyPI version](https://img.shields.io/pypi/v/treepoints)
+
 
 ## Table of Contents
 
